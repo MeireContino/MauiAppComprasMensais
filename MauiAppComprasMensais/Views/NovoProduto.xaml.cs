@@ -1,0 +1,9 @@
+namespace MauiAppComprasMensais.Views;
+
+public partial class NovoProduto : ContentPage
+{
+	public NovoProduto()
+	{
+		InitializeComponent();
+	}
+}
