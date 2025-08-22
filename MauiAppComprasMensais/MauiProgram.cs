@@ -13,6 +13,8 @@ namespace MauiAppComprasMensais
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Kalam-Regular.ttf", "KalamRegular");
+                    fonts.AddFont("Playfair_9pt-Bold.ttf", "Playfair");
                 });
 
 #if DEBUG
