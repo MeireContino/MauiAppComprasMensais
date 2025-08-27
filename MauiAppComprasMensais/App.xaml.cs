@@ -26,7 +26,7 @@ namespace MauiAppComprasMensais
                     //   cria a instância do helper do banco com o caminho definido            
                     _db = new SQLiteDatabaseHelper(path);
                 }
-                //Se _db == for nulo, cria e retorna a instância
+                //Se _db == for nulo, cria e retorna a instância 
                 return _db;
             }
         }
