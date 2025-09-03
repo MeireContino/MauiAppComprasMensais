@@ -3,19 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppComprasMensais.Views.ListaProduto"
              Title="Compras Mensais"
-             BackgroundColor="Salmon"
-             >
-
+             BackgroundColor="Salmon">
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Somar" Clicked="ToolbarItem_Clicked_1" />
         <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
-    
+        
     <VerticalStackLayout>
         <SearchBar x:Name="txt_search" 
                    Placeholder="Busca de Produtos"
                    TextChanged="txt_search_TextChanged" />
-        <ListView x:Name="lst_produtos">
+        <ListView x:Name="lst_produtos" ItemSelected="lst_produtos_ItemSelected">
             <ListView.Header>
                 <Grid ColumnDefinitions=" *, *, *, *, *">
                     <Label Grid.Column="0" Text="ID" />
@@ -42,6 +41,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
     </VerticalStackLayout>
+    
 </ContentPage>

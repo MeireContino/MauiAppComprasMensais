@@ -2,11 +2,38 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppComprasMensais.Views.EditarProduto"
-             Title="EditarProduto">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="{Binding Descricao}">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salvar"  />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15"  Padding="30" 
+                          BackgroundColor="LavenderBlush" >
+            <Frame BorderColor="Black" Padding="30" BackgroundColor="Coral">
+                <Label Text="Editar Produto" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center" />
+            </Frame>
+
+            <Label Text="Descrição do Produto" BackgroundColor="Bisque" FontAttributes="Bold"/>
+            <Entry x:Name="txt_descricao" 
+                FontFamily="Playfair"
+                TextColor="DarkBlue"
+                BackgroundColor="Bisque"/>
+
+            <Label Text="Quantidade: " BackgroundColor="Bisque" FontAttributes="Bold"/>
+            <Entry x:Name="txt_quantidade" Keyboard="Numeric" 
+            FontFamily="Playfair"
+            TextColor="DarkBlue"
+            BackgroundColor="Bisque"/>
+
+            <Label Text="Preço Unitário: " BackgroundColor="Bisque" FontAttributes="Bold"/>
+            <Entry x:Name="txt_preco" Keyboard="Numeric"
+            FontFamily="Playfair"
+            TextColor="DarkBlue"
+            BackgroundColor="Bisque"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
