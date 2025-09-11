@@ -1,12 +1,14 @@
-﻿using SQLite;
+﻿ using SQLite;
 
 namespace MauiAppComprasMensais.Models
 {
     public class Produto
     {
-         string _descricao;
-         double _quantidade;
-         double _preco;
+        string _descricao;
+        double _quantidade;
+        double _preco;
+        DateTime _dataCadastro = DateTime.Now;
+
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -51,5 +53,19 @@ namespace MauiAppComprasMensais.Models
             }
         }
         public double Total => Quantidade * Preco;
+
+        public DateTime DataCadastro
+        {
+            get => _dataCadastro;
+            set
+            {
+                if (value > DateTime.Now)
+                {
+                    throw new Exception("Data de compra não pode ser posterior a data atual");
+                }
+
+                _dataCadastro = value;
+            }
+        }  
     }
 }

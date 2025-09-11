@@ -1,5 +1,6 @@
 ﻿//importa o namespace onde está a classe que ajuda a lidar com o banco de dados SQLite
 using MauiAppComprasMensais.Helpers;
+using System.Globalization;
 
 namespace MauiAppComprasMensais
 
@@ -34,6 +35,8 @@ namespace MauiAppComprasMensais
         {
             
             InitializeComponent();
+
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-Br");
 
             //MainPage = new AppShell(); Pode usar o AppShell
             //define a página inicial como NavigationPage carregando a tela de lista de produtos

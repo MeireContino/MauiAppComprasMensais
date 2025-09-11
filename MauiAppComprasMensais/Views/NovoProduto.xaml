@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              x:Class="MauiAppComprasMensais.Views.NovoProduto"
              Title="Novo Produto">
 
@@ -31,6 +32,16 @@
                FontFamily="Playfair"
                TextColor="DarkBlue"
                BackgroundColor="Bisque"/>
+
+        <Label Text="Data da Compra:" BackgroundColor="Bisque" FontAttributes="Bold"/>
+        <DatePicker x:Name="datePickerCompra"
+                    Format="dd/MM/yyyy"
+                    MaximumDate="{x:Static sys:DateTime.Now}" 
+                    BackgroundColor="Bisque" 
+                    TextColor="DarkBlue"
+                    FontAttributes="Bold"
+                    FontFamily="Playfair"/>
+
 
         </VerticalStackLayout>
     </Frame>

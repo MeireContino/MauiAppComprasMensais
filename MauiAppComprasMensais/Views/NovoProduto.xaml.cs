@@ -13,6 +13,7 @@ public partial class NovoProduto : ContentPage
 
 		//inicializa componentes visuais definidos no XAML
 		InitializeComponent();
+
 	}
 
 	//Método assincrono executado quando o toolbar for clicado
@@ -20,21 +21,36 @@ public partial class NovoProduto : ContentPage
     {
 		try
 		{
+			if (string.IsNullOrWhiteSpace(txt_descricao.Text))
+				throw new Exception("A descrição não pode estar vazia");
+
+			if (!double.TryParse(txt_quantidade.Text, out double quantidade))
+                throw new Exception("Quantidade inválida");
+
+			if (!double.TryParse(txt_preco.Text, out double preco))
+                throw new Exception("Preço inválido");
+
+			if (datePickerCompra.Date < new DateTime(2024, 1, 1))
+                throw new Exception("Data de compra inválida");
+
 			//cria novo objeto do tipo produto que serão preenchidos com dados nos campos de texto
-			Produto p = new Produto
+            Produto p = new Produto
 			{
 				Descricao = txt_descricao.Text, //pega o texto da descrição
-				Quantidade = Convert.ToDouble(txt_quantidade.Text), //converte texto para número
-				Preco = Convert.ToDouble(txt_preco.Text), //converte texto preço para número
-			};
+				Quantidade = quantidade,
+				Preco = preco,
+                DataCadastro = datePickerCompra.Date // adiciona a data de compra
+            };
 
 			//Insere novo produto no banco de dados de forma asíncrona
 			await App.Db.Insert(p);
 			await DisplayAlert("Sucesso!", "Registro Inserido", "OK");
+			await Navigation.PopAsync();
 
 		} catch (Exception ex) //caso ocorra algum erro
 		{
-			await DisplayAlert("Ops", ex.Message, "OK");
+            System.Diagnostics.Debug.WriteLine($"Erro ao salvar: {ex}");
+            await DisplayAlert("Ops", ex.Message, "OK");
 		}
     }
 }
