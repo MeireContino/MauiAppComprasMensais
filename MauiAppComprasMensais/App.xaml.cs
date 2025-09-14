@@ -8,7 +8,7 @@ namespace MauiAppComprasMensais
     public partial class App : Application
     {
         //Declara uma variável estática para o acesso ao banco de dados campo '_db'
-        static SQLiteDatabaseHelper _db;
+        static SQLiteDatabaseHelper? _db;
 
         //propriedade pública que retorna a instância do banco de dados propriedade 'Db'
         public static SQLiteDatabaseHelper Db

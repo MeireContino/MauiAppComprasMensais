@@ -23,6 +23,8 @@
         <ToolbarItem Text="Somar" Clicked="ToolbarItem_Clicked_1" />
         <!-- Botão para adicionar novo produto -->
         <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked" />
+        <!-- Botão para acessar o relatório de compras do período. -->
+        <ToolbarItem Text="Relatório" Clicked="ToolbarItem_Clicked_2" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
@@ -40,16 +42,24 @@
                    Placeholder="Busca de Produtos"
                    TextChanged="txt_search_TextChanged" />
 
-        <Frame Padding="0" Margin="10" VerticalOptions="FillAndExpand">
+        <Frame Padding="0" Margin="10" VerticalOptions="Fill">
         <!-- Cabeçalho da lista com os títulos das colunas -->
         <ListView x:Name="lst_produtos" 
                   IsPullToRefreshEnabled="True"
                   Refreshing="lst_produtos_Refreshing"
                   ItemSelected="lst_produtos_ItemSelected">
             <ListView.Header>
-                <Grid ColumnDefinitions=" 30, 150, 100, 50, 90, 100"
-                      BackgroundColor="#8B4513" >
-                    <Label Grid.Column="0" Text="ID" FontAttributes="Bold" TextColor="White" />
+                    <Grid BackgroundColor="#8B4513" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Text=" ID" FontAttributes="Bold" TextColor="White" />
                     <Label Grid.Column="1" Text="Descrição" FontAttributes="Bold" TextColor="White" />
                     <Label Grid.Column="2" Text="Preço" FontAttributes="Bold" TextColor="White" />
                     <Label Grid.Column="3" Text="Qnt" FontAttributes="Bold" TextColor="White" />
@@ -65,14 +75,21 @@
                             <!-- Layout em grade para exibir dados em colunas -->
                             <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
                         </ViewCell.ContextActions>
-                        <Grid ColumnDefinitions=" 30, 150, 100, 50, 90, 100"
-                              BackgroundColor="#FAE5DF">
-                            <Label Grid.Column="0" Text="{Binding Id}" FontAttributes="Bold"/>
+                        <Grid BackgroundColor="#FAE5DF">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{ Binding Id}" FontAttributes="Bold"/>
                             <Label Grid.Column="1" Text="{Binding Descricao}" FontAttributes="Bold" />
                             <Label Grid.Column="2" Text="{Binding Preco, StringFormat='{}{0:c}'}" FontAttributes="Bold" />
                             <Label Grid.Column="3" Text="{Binding Quantidade}" FontAttributes="Bold" />
                             <Label Grid.Column="4" Text="{Binding Total, StringFormat='{}{0:c}'}" FontAttributes="Bold" />
-                            <Label Grid.Column="5" Text="{Binding DataCadastro, StringFormat=Comprado em: {0:dd/MM/yyyy}'}" FontAttributes="Bold" />
+                            <Label Grid.Column="5" Text="{Binding DataCadastro, StringFormat='Comprado em: {0:dd/MM/yyyy}'}" FontAttributes="Bold" />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

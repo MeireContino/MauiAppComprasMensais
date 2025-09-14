@@ -30,8 +30,11 @@ public partial class NovoProduto : ContentPage
 			if (!double.TryParse(txt_preco.Text, out double preco))
                 throw new Exception("Preço inválido");
 
-			if (datePickerCompra.Date < new DateTime(2024, 1, 1))
-                throw new Exception("Data de compra inválida");
+            if (datePickerCompra.Date < new DateTime(2020, 1, 1))
+                throw new Exception("Data de compra não pode ser anterior a 2021.");
+
+            if (datePickerCompra.Date > DateTime.Today)
+                throw new Exception("Data de compra não pode ser maior que data atual.");
 
 			//cria novo objeto do tipo produto que serão preenchidos com dados nos campos de texto
             Produto p = new Produto

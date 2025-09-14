@@ -1,4 +1,4 @@
-﻿ using SQLite;
+﻿using SQLite;
 
 namespace MauiAppComprasMensais.Models
 {
@@ -13,45 +13,39 @@ namespace MauiAppComprasMensais.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        public string Descricao 
-        { 
+        public string Descricao
+        {
             get => _descricao;
-            set 
+            set
             {
-                if (value == null) 
-                {
-                    throw new Exception("Por favor, preencha a descrição");
-                }
-
+                // if (value == null)
+                //     throw new Exception("Por favor, preencha a descrição");
                 _descricao = value;
             }
         }
-        public double Quantidade 
+
+        public double Quantidade
         {
-            get => _quantidade; 
+            get => _quantidade;
             set
             {
-                if (value <= 0)
-                {
-                    throw new Exception("Por favor, preencha a quantidade maior que zero");
-                }
-
+                // if (value <= 0)
+                //     throw new Exception("Por favor, preencha a quantidade maior que zero");
                 _quantidade = value;
             }
         }
-        public double Preco 
+
+        public double Preco
         {
-            get => _preco; 
+            get => _preco;
             set
             {
-                if (value <= 0)
-                {
-                    throw new Exception("Por favor, preencha um preço válido");
-                }
-
+                // if (value <= 0)
+                //     throw new Exception("Por favor, preencha um preço válido");
                 _preco = value;
             }
         }
+
         public double Total => Quantidade * Preco;
 
         public DateTime DataCadastro
@@ -59,13 +53,11 @@ namespace MauiAppComprasMensais.Models
             get => _dataCadastro;
             set
             {
-                if (value > DateTime.Now)
-                {
-                    throw new Exception("Data de compra não pode ser posterior a data atual");
-                }
-
+                // if (value > DateTime.Now)
+                //     throw new Exception("Data de compra não pode ser posterior a data atual");
                 _dataCadastro = value;
             }
-        }  
+        }
     }
 }
+
